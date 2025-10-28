@@ -1,1316 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
-    <script id="_waua63">var _wau = _wau || []; _wau.push(["dynamic", "streamly", "a63", "c4302bffffff", "small"]);</script><script async src="//waust.at/d.js"></script>
-    
-    
-    
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Sports Streams</title>
 
-<script type="text/javascript" data-cfasync="false">
-/*<![CDATA[/* */
-(function(){var e=window,r="d841a6db9a3cfa16cf7f7f870aff1c53",g=[["siteId",15*990-542-344-960+5229543],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],b=["d3d3LmFudGlhZGJsb2Nrc3lzdGVtcy5jb20vcXFvTC9ndXJsLm1pbi5qcw==","ZDNjb2Q4MHRobjdxbmQuY2xvdWRmcm9udC5uZXQvdkdqUy96WExVdU4vc2pxdWVyeS5tYWduaWZpYy1wb3B1cC5taW4uY3Nz","d3d3Lmx6c2phdXF2YmMuY29tL0cvanVybC5taW4uanM=","d3d3LmV0bWdmeGllYnhwLmNvbS9BVXNRL1ZwbHYvcmpxdWVyeS5tYWduaWZpYy1wb3B1cC5taW4uY3Nz"],m=-1,s,u,x=function(){clearTimeout(u);m++;if(b[m]&&!(1786017133000<(new Date).getTime()&&1<m)){s=e.document.createElement("script");s.type="text/javascript";s.async=!0;var q=e.document.getElementsByTagName("script")[0];s.src="https://"+atob(b[m]);s.crossOrigin="anonymous";s.onerror=x;s.onload=function(){clearTimeout(u);e[r.slice(0,16)+r.slice(0,16)]||x()};u=setTimeout(x,5E3);q.parentNode.insertBefore(s,q)}};if(!e[r]){try{Object.freeze(e[r]=g)}catch(e){}x()}})();
-/*]]>/* */
-</script>
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'primary': '#0b0f13',
+            'secondary': '#10b981',
+          },
+        },
+      },
+    };
+  </script>
 
-
-
-<script type="text/javascript" data-cfasync="false">
-/*<![CDATA[/* */
-(function(){var e=window,r="d841a6db9a3cfa16cf7f7f870aff1c53",g=[["siteId",15*990-542-344-960+5229543],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],b=["d3d3LmFudGlhZGJsb2Nrc3lzdGVtcy5jb20vcXFvTC9ndXJsLm1pbi5qcw==","ZDNjb2Q4MHRobjdxbmQuY2xvdWRmcm9udC5uZXQvdkdqUy96WExVdU4vc2pxdWVyeS5tYWduaWZpYy1wb3B1cC5taW4uY3Nz","d3d3Lmx6c2phdXF2YmMuY29tL0cvanVybC5taW4uanM=","d3d3LmV0bWdmeGllYnhwLmNvbS9BVXNRL1ZwbHYvcmpxdWVyeS5tYWduaWZpYy1wb3B1cC5taW4uY3Nz"],m=-1,s,u,x=function(){clearTimeout(u);m++;if(b[m]&&!(1786017133000<(new Date).getTime()&&1<m)){s=e.document.createElement("script");s.type="text/javascript";s.async=!0;var q=e.document.getElementsByTagName("script")[0];s.src="https://"+atob(b[m]);s.crossOrigin="anonymous";s.onerror=x;s.onload=function(){clearTimeout(u);e[r.slice(0,16)+r.slice(0,16)]||x()};u=setTimeout(x,5E3);q.parentNode.insertBefore(s,q)}};if(!e[r]){try{Object.freeze(e[r]=g)}catch(e){}x()}})();
-/*]]>/* */
-</script>
-
-    
-    
-    
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GOTOSTREAMLY - Sports Streaming</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #141414;
-            color: white;
-            overflow-x: hidden;
-        }
-        
-        /* Header */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, transparent 100%);
-            padding: 30px 40px;
-            transition: all 0.3s ease;
-            transform: translateY(0);
-        }
-        
-        .header.scrolled {
-            background-color: #141414;
-        }
-        
-        .header.hidden {
-            transform: translateY(-100%);
-        }
-        
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-        }
-        
-        .logo {
-            font-size: 28px;
-            font-weight: 700;
-            color: #e50914;
-            text-decoration: none;
-        }
-        
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-        
-        .nav-menu a {
-            color: white;
-            text-decoration: none;
-            font-weight: 400;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-menu a:hover {
-            color: #e50914;
-        }
-        
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        
-        .streamer-btn {
-            background: linear-gradient(135deg, #e50914 0%, #ff6b6b 100%);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .streamer-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(229, 9, 20, 0.3);
-            color: white;
-            text-decoration: none;
-        }
-        
-        .streamer-btn i {
-            font-size: 16px;
-        }
-        
-        .login-btn {
-            background: transparent;
-            color: white;
-            padding: 10px 20px;
-            border: 2px solid #e50914;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-        }
-        
-        .login-btn:hover {
-            background: #e50914;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(229, 9, 20, 0.3);
-            color: white;
-            text-decoration: none;
-        }
-        
-        .login-btn i {
-            font-size: 16px;
-        }
-        
-        .search-icon {
-            font-size: 20px;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-        
-        .search-icon:hover {
-            color: #e50914;
-        }
-        
-        .profile-dropdown {
-            position: relative;
-            cursor: pointer;
-        }
-        
-        .profile-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 4px;
-            background: #e50914;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-        }
-        
-        /* Mobile Menu Toggle */
-        .mobile-menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 5px;
-        }
-        
-        .mobile-menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: white;
-            margin: 3px 0;
-            transition: 0.3s;
-        }
-        
-        .mobile-menu-toggle.active span:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-        
-        .mobile-menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .mobile-menu-toggle.active span:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-        
-        /* Mobile Menu */
-        .mobile-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: #141414;
-            border-top: 1px solid #333;
-            padding: 20px;
-            flex-direction: column;
-            gap: 15px;
-        }
-        
-        .mobile-menu.active {
-            display: flex;
-        }
-        
-        .mobile-menu a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            padding: 10px 0;
-            border-bottom: 1px solid #333;
-            transition: color 0.3s ease;
-        }
-        
-        .mobile-menu a:hover {
-            color: #e50914;
-        }
-        
-        .mobile-menu a:last-child {
-            border-bottom: none;
-        }
-        
-        .mobile-menu .streamer-btn {
-            background: linear-gradient(135deg, #e50914 0%, #ff6b6b 100%);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin: 10px 0;
-            border: none;
-        }
-        
-        .mobile-menu .streamer-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(229, 9, 20, 0.3);
-            color: white;
-            text-decoration: none;
-        }
-        
-        .mobile-menu .login-btn {
-            background: transparent;
-            color: white;
-            padding: 12px 20px;
-            border: 2px solid #e50914;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin: 10px 0;
-        }
-        
-        .mobile-menu .login-btn:hover {
-            background: #e50914;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(229, 9, 20, 0.3);
-            color: white;
-            text-decoration: none;
-        }
-        
-        /* Main Content */
-        .main-content {
-            padding-top: 0;
-        }
-        
-        /* Hero Section - TotalSportek Style */
-        .hero-section {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            padding: 80px 20px 40px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            margin-top: 0;
-        }
-        
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(229, 9, 20, 0.1) 0%, transparent 50%);
-            pointer-events: none;
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 30px;
-            background: linear-gradient(135deg, #e50914, #ff6b6b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInUp 1s ease-out;
-        }
-        
-        .hero-description {
-            font-size: 1.3rem;
-            color: #ccc;
-            line-height: 1.6;
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            animation: fadeInUp 1s ease-out 0.2s both;
-        }
-        
-        .hero-actions {
-            animation: fadeInUp 1s ease-out 0.4s both;
-        }
-        
-        .discord-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 16px 32px;
-            background: linear-gradient(135deg, #5865f2, #7289da);
-            color: white;
-            text-decoration: none;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(88, 101, 242, 0.3);
-            border: 2px solid transparent;
-        }
-        
-        .discord-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(88, 101, 242, 0.4);
-            background: linear-gradient(135deg, #7289da, #5865f2);
-            border-color: #7289da;
-        }
-        
-        .discord-btn i {
-            font-size: 1.3rem;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* TotalSportek Style Theme */
-        .sports-section {
-            padding: 40px 0;
-            background: #f8f9fa;
-            min-height: 100vh;
-        }
-        
-        .sports-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .sports-title {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 40px;
-            color: #2c3e50;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        
-        .sports-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-            padding: 0 20px;
-        }
-        
-        .sports-card {
-            background: white;
-            border-radius: 8px;
-            padding: 25px 20px;
-            text-align: center;
-            cursor: pointer;
-            border: 1px solid #e9ecef;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-        
-        .sports-card:hover {
-            border-color: #e50914;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-        }
-        
-        .sports-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            display: block;
-            color: #e50914;
-        }
-        
-        .sports-name {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .sports-description {
-            font-size: 0.9rem;
-            color: #6c757d;
-            line-height: 1.5;
-            margin: 0;
-        }
-        
-        /* Game List Styles */
-        .game-list {
-            display: none;
-            margin-top: 20px;
-        }
-        
-        .game-list.show {
-            display: block;
-        }
-        
-        .sports-card.expanded {
-            transform: scale(1.02);
-        }
-        
-        .game-item {
-            background: white;
-            border-radius: 6px;
-            padding: 20px;
-            margin-bottom: 15px;
-            border-left: 4px solid #e50914;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            border: 1px solid #e9ecef;
-        }
-        
-        .game-item:hover {
-            background: #f8f9fa;
-            transform: translateX(5px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-            border-left-color: #dc3545;
-        }
-        
-        .game-item h4 {
-            color: #000000;
-            font-weight: 600;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-        
-        .game-item p {
-            color: #6c757d;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-        }
-        
-        .stream-link {
-            display: inline-block;
-            background: linear-gradient(135deg, #e50914, #ff6b6b);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 10px;
-            transition: all 0.3s ease;
-        }
-        
-        .stream-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(229, 9, 20, 0.3);
-            color: white;
-            text-decoration: none;
-        }
-        
-        .stream-link i {
-            margin-right: 8px;
-        }
-        
-        .stream-item {
-            background: #f8f9fa;
-            border-radius: 6px;
-            padding: 15px;
-            margin: 10px 0;
-            border-left: 3px solid #e50914;
-            border: 1px solid #e9ecef;
-            transition: all 0.3s ease;
-        }
-        
-        .stream-item:hover {
-            background: #e9ecef;
-            transform: translateX(3px);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        .stream-item p {
-            margin: 5px 0;
-            font-size: 0.9rem;
-        }
-        
-        .game-teams {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #000000;
-            margin-bottom: 8px;
-        }
-        
-        .game-link {
-            color: #e50914;
-            text-decoration: none;
-            font-size: 0.9rem;
-            display: inline-block;
-            padding: 5px 10px;
-            background: rgba(229, 9, 20, 0.1);
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-        
-        .game-link:hover {
-            background: rgba(229, 9, 20, 0.2);
-            color: #ff6b6b;
-        }
-        
-        /* Position System Styles */
-        .stream-item.position-1 {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 193, 7, 0.1)) !important;
-            border-left: 5px solid #ffd700 !important;
-            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3) !important;
-            transform: scale(1.02);
-        }
-        
-        .stream-item.position-2 {
-            background: linear-gradient(135deg, rgba(192, 192, 192, 0.2), rgba(169, 169, 169, 0.1)) !important;
-            border-left: 4px solid #c0c0c0 !important;
-            box-shadow: 0 5px 18px rgba(192, 192, 192, 0.3) !important;
-            transform: scale(1.01);
-        }
-        
-        .stream-item.position-3 {
-            background: linear-gradient(135deg, rgba(205, 127, 50, 0.2), rgba(184, 115, 51, 0.1)) !important;
-            border-left: 4px solid #cd7f32 !important;
-            box-shadow: 0 4px 15px rgba(205, 127, 50, 0.3) !important;
-        }
-        
-        .position-badge-1 {
-            display: inline-block;
-            background: linear-gradient(135deg, #ffd700, #ffed4e);
-            color: #000;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-left: 8px;
-            box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4);
-        }
-        
-        .position-badge-2 {
-            display: inline-block;
-            background: linear-gradient(135deg, #c0c0c0, #a9a9a9);
-            color: #000;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-left: 8px;
-            box-shadow: 0 2px 8px rgba(192, 192, 192, 0.4);
-        }
-        
-        .position-badge-3 {
-            display: inline-block;
-            background: linear-gradient(135deg, #cd7f32, #b87351);
-            color: white;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-left: 8px;
-            box-shadow: 0 2px 8px rgba(205, 127, 50, 0.4);
-        }
-        
-        .streamer-name-button {
-            background: #e50914;
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 8px 16px;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            display: inline-block;
-            border: 1px solid #e50914;
-            font-size: 13px;
-            cursor: pointer;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .streamer-name-button:hover {
-            background: #dc3545;
-            border-color: #dc3545;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(229, 9, 20, 0.3);
-            text-decoration: none;
-            color: white;
-        }
-        
-        .streamer-name-button:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 6px rgba(229, 9, 20, 0.3);
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header {
-                padding: 25px 20px;
-            }
-            
-            .nav-menu {
-                display: none;
-            }
-            
-            .mobile-menu-toggle {
-                display: flex;
-            }
-            
-            .nav-actions {
-                gap: 15px;
-            }
-            
-            .streamer-btn {
-                display: none;
-            }
-            
-            .login-btn {
-                display: none;
-            }
-            
-            .search-icon {
-                font-size: 18px;
-            }
-            
-            .profile-avatar {
-                width: 28px;
-                height: 28px;
-                font-size: 14px;
-            }
-            
-            .hero-section {
-                padding: 60px 20px 30px;
-            }
-            
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-description {
-                font-size: 1.1rem;
-            }
-            
-            .sports-section {
-                padding: 40px 15px;
-            }
-            
-            .sports-title {
-                font-size: 2rem;
-                margin-bottom: 30px;
-            }
-            
-            .sports-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 20px;
-                padding: 0 10px;
-            }
-            
-            .sports-card {
-                padding: 30px 20px;
-            }
-            
-            .sports-icon {
-                font-size: 2.5rem;
-                margin-bottom: 15px;
-            }
-            
-            .sports-name {
-                font-size: 1.3rem;
-            }
-            
-            .sports-description {
-                font-size: 0.9rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .header {
-                padding: 10px 15px;
-            }
-            
-            .logo {
-                font-size: 24px;
-            }
-            
-            .nav-actions {
-                gap: 10px;
-            }
-            
-            .streamer-btn {
-                padding: 6px 12px;
-                font-size: 12px;
-            }
-            
-            .login-btn {
-                padding: 6px 12px;
-                font-size: 12px;
-            }
-            
-            .mobile-menu-toggle span {
-                width: 20px;
-                height: 2px;
-            }
-            
-            .hero-section {
-                padding: 60px 15px;
-            }
-            
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .hero-description {
-                font-size: 1rem;
-            }
-            
-            .discord-btn {
-                padding: 14px 24px;
-                font-size: 1rem;
-            }
-            
-            .sports-section {
-                padding: 30px 10px;
-            }
-            
-            .sports-title {
-                font-size: 1.8rem;
-                margin-bottom: 25px;
-            }
-            
-            .sports-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-                padding: 0 5px;
-            }
-            
-            .sports-card {
-                padding: 25px 15px;
-            }
-            
-            .sports-icon {
-                font-size: 2rem;
-                margin-bottom: 10px;
-            }
-            
-            .sports-name {
-                font-size: 1.2rem;
-            }
-            
-            .sports-description {
-                font-size: 0.8rem;
-            }
-        }
-    </style>
+  <style>
+    body {
+      background-color: #0b0f13;
+      color: white;
+      font-family: system-ui, sans-serif;
+    }
+    a.footer-link {
+      float: right;
+      font-size: 10px;
+      color: #6b6b6b;
+      text-decoration: none;
+    }
+  </style>
 </head>
-<body>
-    <!-- Header -->
-    <header class="header" id="header">
-        <nav class="nav">
-            <a href="#" class="logo">GOTOSTREAMLY</a>
-            <ul class="nav-menu" id="navMenu">
-                <!-- Navigation items will be loaded dynamically -->
-            </ul>
-            <div class="nav-actions">
-                <a href="register.php" class="streamer-btn">
-                    <i class="fas fa-user-plus"></i>
-                    <span>Register</span>
-                </a>
-                <a href="streamer.php" class="login-btn">
-                    <i class="fas fa-sign-in-alt"></i>
-                    <span>Login</span>
-                </a>
-                <i class="fas fa-search search-icon"></i>
-                <div class="profile-dropdown">
-                    <div class="profile-avatar">A</div>
-                </div>
-                <div class="mobile-menu-toggle" id="mobileMenuToggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </nav>
-        <div class="mobile-menu" id="mobileMenu">
-            <!-- Mobile menu items will be loaded dynamically -->
-        </div>
-    </header>
+<body class="w-full min-h-screen bg-primary text-white p-6">
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="hero-section">
-            <div class="hero-content">
-                <h1 class="hero-title">Welcome to GOTOSTREAMLY</h1>
-                <p class="hero-description">
-                    Your ultimate destination for live sports streaming. Watch your favorite games, matches, and events from around the world in high quality. Join our community and never miss a moment of the action!
-                </p>
-                <div class="hero-actions">
-                    <a href="https://discord.gg/your-server-link" class="discord-btn" id="discordBtn" target="_blank">
-                        <i class="fab fa-discord"></i>
-                        <span id="discordBtnText">Join Our Discord</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </main>
+  <div class="w-full mx-auto px-6">
+    <div id="root" class="text-center py-10 text-gray-400">Loading streams...</div>
+  </div>
 
-    <!-- Sports Links Section -->
-    <section class="sports-section">
-        <div class="sports-container">
-            <h2 class="sports-title">Sports Categories</h2>
-            <div class="sports-grid" id="sportsGrid">
-                <!-- Sport cards will be loaded dynamically from database -->
-                <div style="text-align: center; padding: 40px; color: #999;">
-                    <i class="fas fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 20px;"></i>
-                    <p>Loading sports categories...</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <a class="footer-link" href="https://streamcenter.live" target="_blank">Live Stream Sports</a>
 
-    <script>
-        // Global variables
-        let sportCards = [];
-        let cardMapping = {};
+  <script>
+    (function() {
+      const API_URL = 'https://backendstreamcenter.youshop.pro:488/api';
+      const CATEGORY_ID = 'all';
 
-        // Header scroll effect with hide/show
-        let lastScrollY = window.scrollY;
-        let ticking = false;
-        
-        function updateHeader() {
-            const header = document.getElementById('header');
-            const currentScrollY = window.scrollY;
-            
-            if (currentScrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-            
-            // Hide navbar on scroll down, show on scroll up
-            if (currentScrollY > lastScrollY && currentScrollY > 200) {
-                header.classList.add('hidden');
-            } else {
-                header.classList.remove('hidden');
-            }
-            
-            lastScrollY = currentScrollY;
-            ticking = false;
+      let allGames = [];
+      let categories = [];
+      let currentCategoryId = CATEGORY_ID;
+      let expandedGame = null;
+      let streamsCache = {};
+
+      const formatDateTime = (dateString) => {
+        try {
+          const d = new Date(dateString);
+          if (isNaN(d.getTime())) return dateString || '';
+          const date = d.toLocaleDateString();
+          const time = d.toLocaleTimeString([], {
+            hour: 'numeric',
+            minute: '2-digit',
+            hour12: true
+          });
+          return `${date} • ${time}`;
+        } catch (e) {
+          return dateString || '';
         }
-        
-        window.addEventListener('scroll', function() {
-            if (!ticking) {
-                requestAnimationFrame(updateHeader);
-                ticking = true;
+      };
+
+      async function loadData() {
+        try {
+          const [catsRes, gamesRes] = await Promise.all([
+            fetch(API_URL + '/Categories'),
+            fetch(API_URL + '/Parties?pageNumber=1&pageSize=500'),
+          ]);
+
+          const cats = catsRes.ok ? await catsRes.json() : [];
+          const rawGames = gamesRes.ok ? await gamesRes.json() : [];
+
+          categories = Array.isArray(cats) ? cats : [];
+          const enriched = (Array.isArray(rawGames) ? rawGames : []).map(g => {
+            const fullCat = cats && Array.isArray(cats) ? cats.find(c => c.id === g.categoryId) : null;
+            return { ...g, category: fullCat || g.category };
+          });
+
+          const formatted = enriched.map(g => ({
+            ...g,
+            parsedDate: new Date(g.beginPartie || g.date || Date.now()),
+            title: (g.name || '').replace(/\s+\|\s+/g, ' vs ')
+          }));
+
+          formatted.sort((a, b) => new Date(a.parsedDate) - new Date(b.parsedDate));
+          allGames = formatted;
+
+          renderWidget();
+        } catch (error) {
+          console.error('Widget error:', error);
+          document.getElementById('root').innerHTML =
+            '<div class="text-left py-8 text-red-400">Failed to load streams</div>';
+        }
+      }
+
+      async function fetchStreamsForGame(game) {
+        if (!game) return [];
+        if (streamsCache[game.id]) return streamsCache[game.id];
+
+        if (game.videoUrl && typeof game.videoUrl === 'string') {
+          try {
+            const parts = game.videoUrl.split(';').map(p => p.trim()).filter(Boolean);
+            const parsed = parts.map(p => {
+              const [url, label] = p.split('<');
+              return { url: url?.trim(), name: (label || 'Stream').trim() };
+            }).filter(s => s.url);
+            if (parsed.length > 0) {
+              streamsCache[game.id] = parsed;
+              return parsed;
             }
+          } catch {}
+        }
+
+        if (Array.isArray(game.streams) && game.streams.length > 0) {
+          streamsCache[game.id] = game.streams;
+          return game.streams;
+        }
+        if (Array.isArray(game.servers) && game.servers.length > 0) {
+          streamsCache[game.id] = game.servers;
+          return game.servers;
+        }
+
+        try {
+          const res = await fetch(API_URL + '/Parties/' + game.id + '/Servers');
+          if (res.ok) {
+            const data = await res.json();
+            const arr = Array.isArray(data) ? data : [];
+            streamsCache[game.id] = arr;
+            return arr;
+          }
+        } catch {}
+        streamsCache[game.id] = [];
+        return [];
+      }
+
+      async function toggleExpand(game) {
+        if (expandedGame && expandedGame.id === game.id) {
+          expandedGame = null;
+          renderWidget();
+          return;
+        }
+        await fetchStreamsForGame(game);
+        expandedGame = game;
+        renderWidget();
+      }
+
+      function renderWidget() {
+        const container = document.getElementById('root');
+        container.innerHTML = '';
+
+        // Category Tabs
+        const categorySection = document.createElement('div');
+        categorySection.className = 'mb-6 overflow-x-auto';
+
+        const categoryTabs = document.createElement('div');
+        categoryTabs.className = 'flex space-x-3 items-center';
+
+        const categoriesWithAll = [{ id: 'all', name: 'All', imagePath: null }, ...categories];
+
+        categoriesWithAll.forEach(cat => {
+          const button = document.createElement('button');
+          button.className = `flex items-center gap-2 px-4 py-2 rounded-lg whitespace-nowrap border ${
+            cat.id === currentCategoryId
+              ? 'bg-secondary text-primary border-secondary'
+              : 'bg-gray-800 border-gray-700 text-gray-300'
+          }`;
+
+          const span = document.createElement('span');
+          span.className = 'text-sm';
+          span.textContent = cat.name;
+          button.appendChild(span);
+
+          button.onclick = () => {
+            currentCategoryId = cat.id;
+            renderWidget();
+          };
+
+          categoryTabs.appendChild(button);
         });
 
-        // Mobile menu toggle
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        
-        mobileMenuToggle.addEventListener('click', function() {
-            this.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-        });
+        categorySection.appendChild(categoryTabs);
+        container.appendChild(categorySection);
 
-        // Close mobile menu when clicking on a link
-        document.addEventListener('click', function(event) {
-            if (event.target.tagName === 'A' && event.target.getAttribute('href').startsWith('#')) {
-                mobileMenuToggle.classList.remove('active');
-                mobileMenu.classList.remove('active');
+        // Games List
+        const gamesContainer = document.createElement('div');
+        gamesContainer.className = 'grid grid-cols-1 gap-4';
+
+        const filteredGames =
+          currentCategoryId === 'all'
+            ? allGames
+            : allGames.filter(
+                g =>
+                  String(g.categoryId) === String(currentCategoryId) ||
+                  (g.category && String(g.category.id) === String(currentCategoryId))
+              );
+
+        if (filteredGames.length === 0) {
+          gamesContainer.innerHTML =
+            '<div class="text-left py-8 text-gray-400">No games found in this category.</div>';
+        } else {
+          filteredGames.forEach(game => {
+            const gameDiv = document.createElement('div');
+            gameDiv.className =
+              'bg-gray-900 rounded-xl p-4 border border-gray-800 cursor-pointer hover:shadow-xl transition-shadow duration-200';
+            gameDiv.onclick = () => toggleExpand(game);
+
+            const header = document.createElement('div');
+            header.className = 'flex items-center justify-between';
+
+            const infoDiv = document.createElement('div');
+            infoDiv.className = 'text-left';
+
+            const titleDiv = document.createElement('div');
+            titleDiv.className = 'font-semibold text-lg';
+            titleDiv.textContent = game.title || game.name || 'Match';
+
+            const catDiv = document.createElement('div');
+            catDiv.className = 'text-xs text-gray-400';
+            catDiv.textContent = (game.category && game.category.name) || 'General';
+
+            infoDiv.appendChild(titleDiv);
+            infoDiv.appendChild(catDiv);
+            header.appendChild(infoDiv);
+            gameDiv.appendChild(header);
+
+            // Expanded Section
+            if (expandedGame && expandedGame.id === game.id) {
+              const expandedDiv = document.createElement('div');
+              expandedDiv.className =
+                'mt-4 border-t border-gray-800 pt-4 bg-gray-800 rounded-b-xl transition-all';
+
+              const servers = streamsCache[game.id] || [];
+
+               if (servers.length > 0) {
+                 servers.forEach((s, i) => {
+                   const serverContainer = document.createElement('div');
+                   serverContainer.className = 'flex items-center justify-between mb-2 p-3 rounded bg-gray-700 hover:bg-gray-600';
+                   
+                   const serverButton = document.createElement('button');
+                   serverButton.className = 'flex-1 text-left';
+                   serverButton.textContent = `Server ${i + 1}`;
+                   serverButton.onclick = e => {
+                     e.stopPropagation();
+                     window.open(s.url || s.stream || s, '_blank');
+                   };
+                   
+                   const copyButton = document.createElement('button');
+                   copyButton.className = 'ml-3 px-3 py-1 text-xs bg-secondary text-primary rounded hover:bg-green-600 hover:text-white transition-colors';
+                   copyButton.textContent = 'Copy Iframe';
+                   copyButton.onclick = e => {
+                     e.stopPropagation();
+                     const iframeCode = `<iframe src="${s.url || s.stream || s}" width="100%" height="400" frameborder="0" allowfullscreen></iframe>`;
+                     navigator.clipboard.writeText(iframeCode).then(() => {
+                       copyButton.textContent = 'Copied!';
+                       setTimeout(() => {
+                         copyButton.textContent = 'Copy Iframe';
+                       }, 2000);
+                     }).catch(() => {
+                       // Fallback for older browsers
+                       const textArea = document.createElement('textarea');
+                       textArea.value = iframeCode;
+                       document.body.appendChild(textArea);
+                       textArea.select();
+                       document.execCommand('copy');
+                       document.body.removeChild(textArea);
+                       copyButton.textContent = 'Copied!';
+                       setTimeout(() => {
+                         copyButton.textContent = 'Copy Iframe';
+                       }, 2000);
+                     });
+                   };
+                   
+                   serverContainer.appendChild(serverButton);
+                   serverContainer.appendChild(copyButton);
+                   expandedDiv.appendChild(serverContainer);
+                 });
+               } else {
+                const noStream = document.createElement('div');
+                noStream.className = 'text-sm text-gray-400';
+                noStream.textContent = 'No servers found for this game.';
+                expandedDiv.appendChild(noStream);
+              }
+
+              gameDiv.appendChild(expandedDiv);
             }
-        });
 
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!mobileMenuToggle.contains(event.target) && !mobileMenu.contains(event.target)) {
-                mobileMenuToggle.classList.remove('active');
-                mobileMenu.classList.remove('active');
-            }
-        });
-
-        // Search functionality
-        document.querySelector('.search-icon').addEventListener('click', function() {
-            alert('Search functionality would be implemented here!');
-        });
-
-        // Profile dropdown
-        document.querySelector('.profile-dropdown').addEventListener('click', function() {
-            alert('Profile menu would open here!');
-        });
-
-        // Load sport cards from API
-        async function loadSportCardsFromAPI() {
-            try {
-                const response = await fetch('api.php?action=get_active_sport_cards');
-                const data = await response.json();
-                
-                if (data.success) {
-                    sportCards = data.cards;
-                    displaySportCards();
-                    setupNavigation();
-                } else {
-                    console.error('API Error:', data.error);
-                    showError('Failed to load sport categories');
-                }
-            } catch (error) {
-                console.error('Error loading sport cards:', error);
-                showError('Failed to load sport categories');
-            }
-        }
-        
-        // Load streaming links from API
-        async function loadStreamingLinksFromAPI() {
-            try {
-                const response = await fetch('api.php?action=get_streaming_links');
-                const data = await response.json();
-                
-                console.log('Streaming links API response:', data);
-                
-                if (data.success) {
-                    displayStreamingLinks(data.links);
-                } else {
-                    console.error('API Error:', data.error);
-                }
-            } catch (error) {
-                console.error('Error loading streaming links:', error);
-            }
+            gamesContainer.appendChild(gameDiv);
+          });
         }
 
-        // Display streaming links
-        function displayStreamingLinks(links) {
-            console.log('Displaying streaming links:', links);
-            
-            // Group links by sport
-            const linksBySport = {};
-            links.forEach(link => {
-                if (!linksBySport[link.sport]) {
-                    linksBySport[link.sport] = [];
-                }
-                linksBySport[link.sport].push(link);
-            });
-            
-            console.log('Grouped links by sport:', linksBySport);
-            
-            // Store links for use in sport cards
-            window.streamingLinks = linksBySport;
-        }
-        
-        // Display sport cards
-        function displaySportCards() {
-            const sportsGrid = document.getElementById('sportsGrid');
-            
-            if (sportCards.length === 0) {
-                sportsGrid.innerHTML = `
-                    <div style="text-align: center; padding: 40px; color: #999;">
-                        <i class="fas fa-exclamation-triangle" style="font-size: 2rem; margin-bottom: 20px;"></i>
-                        <p>No sport categories available</p>
-                    </div>
-                `;
-                return;
-            }
-            
-            let html = '';
-            sportCards.forEach(card => {
-                const cardId = `${card.sport_key}Card`;
-                const gameListId = `${card.sport_key}GameList`;
-                
-                // Store mapping for navigation
-                cardMapping[card.sport_key] = cardId;
-                
-                // Get streaming links for this sport
-                const sportLinks = window.streamingLinks && window.streamingLinks[card.sport_key] ? window.streamingLinks[card.sport_key] : [];
-                
-                html += `
-                    <div class="sports-card ${card.sport_key}-card" id="${cardId}">
-                        <span class="sports-icon">${card.sport_icon}</span>
-                        <h3 class="sports-name">${card.sport_name}</h3>
-                        <p class="sports-description">${card.sport_description}</p>
-                        
-                        <div class="game-list" id="${gameListId}">
-                            ${sportLinks.length > 0 ? sportLinks
-                                .sort((a, b) => {
-                                    // Sort by position: 1st, 2nd, 3rd, then others
-                                    const posA = parseInt(a.priority_rank) || 0;
-                                    const posB = parseInt(b.priority_rank) || 0;
-                                    
-                                    // If both have positions, sort by position (1st comes before 2nd, etc.)
-                                    if (posA > 0 && posB > 0) {
-                                        return posA - posB;
-                                    }
-                                    // If only one has position, prioritize it
-                                    if (posA > 0 && posB === 0) return -1;
-                                    if (posB > 0 && posA === 0) return 1;
-                                    // If neither has position, sort by creation date
-                                    return new Date(b.created_at) - new Date(a.created_at);
-                                })
-                                .map(link => {
-                                    const position = link.priority_rank;
-                                    let itemClass = '';
-                                    let badge = '';
-                                    
-                                    if (position == 1) {
-                                        itemClass = 'position-1';
-                                        badge = '';
-                                    } else if (position == 2) {
-                                        itemClass = 'position-2';
-                                        badge = '';
-                                    } else if (position == 3) {
-                                        itemClass = 'position-3';
-                                        badge = '';
-                                    }
-                                    
-                                    return `
-                                        <div class="stream-item ${itemClass}">
-                                            <p><strong>Streamer:</strong> <a href="${link.streaming_link}" target="_blank" class="streamer-name-button">${link.streamer_name || link.added_by}</a> ${badge}</p>
-                                        </div>
-                                    `;
-                                }).join('') : '<p style="color: #999; text-align: center; padding: 20px;">No live streams available</p>'}
-                        </div>
-                    </div>
-                `;
-            });
-            
-            sportsGrid.innerHTML = html;
-            
-            // Setup click handlers for each card
-            setupCardClickHandlers();
-        }
+        container.appendChild(gamesContainer);
+      }
 
-        // Setup navigation menu
-        function setupNavigation() {
-            const navMenu = document.getElementById('navMenu');
-            const mobileMenu = document.getElementById('mobileMenu');
-            
-            let navHtml = '';
-            let mobileHtml = '';
-            
-            sportCards.forEach(card => {
-                navHtml += `<li><a href="#${card.sport_key}">${card.sport_name}</a></li>`;
-                mobileHtml += `<a href="#${card.sport_key}">${card.sport_name}</a>`;
-            });
-            
-            // Add streamer buttons to mobile menu
-            mobileHtml += `<a href="register.php" class="streamer-btn"><i class="fas fa-user-plus"></i> Register</a>`;
-            mobileHtml += `<a href="streamer.php" class="login-btn"><i class="fas fa-sign-in-alt"></i> Login</a>`;
-            
-            navMenu.innerHTML = navHtml;
-            mobileMenu.innerHTML = mobileHtml;
-            
-            // Setup smooth scrolling for navigation links
-            setupSmoothScrolling();
-        }
-
-        // Setup smooth scrolling for navigation links
-        function setupSmoothScrolling() {
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                
-                const cardId = cardMapping[targetId];
-                if (cardId) {
-                    const targetCard = document.getElementById(cardId);
-                    if (targetCard) {
-                        targetCard.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'center'
-                        });
-                    }
-                }
-            });
-        });
-        }
-
-        // Setup click handlers for sport cards
-        function setupCardClickHandlers() {
-            sportCards.forEach(card => {
-                const cardElement = document.getElementById(`${card.sport_key}Card`);
-                const gameListElement = document.getElementById(`${card.sport_key}GameList`);
-                
-                if (cardElement && gameListElement) {
-                    cardElement.addEventListener('click', function(e) {
-            // Don't trigger if clicking on game links
-            if (e.target.classList.contains('game-link')) {
-                return;
-            }
-            
-            // Close other cards first
-                        closeOtherCards(`${card.sport_key}Card`);
-                        
-                        gameListElement.classList.toggle('show');
-                        cardElement.classList.toggle('expanded');
-                    });
-                }
-            });
-        }
-
-        // Function to close all other cards
-        function closeOtherCards(currentCardId) {
-            sportCards.forEach(card => {
-                const cardId = `${card.sport_key}Card`;
-                if (cardId !== currentCardId) {
-                    const cardElement = document.getElementById(cardId);
-                    const gameListElement = document.getElementById(`${card.sport_key}GameList`);
-                    if (cardElement && gameListElement) {
-                        gameListElement.classList.remove('show');
-                        cardElement.classList.remove('expanded');
-                    }
-                }
-            });
-        }
-
-        // Load admin team matchups and streamer links
-        async function loadAdminMatchupsAndStreams() {
-            try {
-                // First load admin-created games
-                const gamesResponse = await fetch('api.php?action=get_games');
-                const gamesData = await gamesResponse.json();
-                
-                console.log('Games data:', gamesData); // Debug logging
-                
-                if (gamesData.success) {
-                    Object.keys(gamesData.games).forEach(sport => {
-                        const gameList = document.getElementById(`${sport}GameList`);
-                        if (gameList) {
-                            if (gamesData.games[sport].length > 0) {
-                                // Group admin games by team matchup
-                                const gamesByMatchup = {};
-                                gamesData.games[sport].forEach(game => {
-                                    const key = game.team_matchup;
-                                    if (!gamesByMatchup[key]) {
-                                        gamesByMatchup[key] = {
-                                            game: game,
-                                            streams: []
-                                        };
-                                    }
-                                    
-                                    // Add streaming links if available
-                                    if (window.streamingLinks && window.streamingLinks[sport]) {
-                                        const sportStreams = window.streamingLinks[sport].filter(stream => 
-                                            stream.team_matchup === game.team_matchup
-                                        );
-                                        gamesByMatchup[key].streams = sportStreams;
-                                    }
-                                });
-                                
-                                // Display admin team matchups with streamer links
-                                gameList.innerHTML = Object.values(gamesByMatchup).map(({game, streams}) => `
-                                    <div class="game-item">
-                                        <div class="game-teams">${game.game_number}. ${game.team_matchup}</div>
-                                        ${streams.length > 0 ? streams
-                                            .sort((a, b) => {
-                                                // Sort by position: 1st, 2nd, 3rd, then others
-                                                const posA = parseInt(a.priority_rank) || 0;
-                                                const posB = parseInt(b.priority_rank) || 0;
-                                                
-                                                // If both have positions, sort by position (1st comes before 2nd, etc.)
-                                                if (posA > 0 && posB > 0) {
-                                                    return posA - posB;
-                                                }
-                                                // If only one has position, prioritize it
-                                                if (posA > 0 && posB === 0) return -1;
-                                                if (posB > 0 && posA === 0) return 1;
-                                                // If neither has position, sort by creation date
-                                                return new Date(b.created_at) - new Date(a.created_at);
-                                            })
-                                            .map(stream => {
-                                                const position = stream.priority_rank;
-                                                let itemClass = '';
-                                                let badge = '';
-                                                
-                                                if (position == 1) {
-                                                    itemClass = 'position-1';
-                                                    badge = '';
-                                                } else if (position == 2) {
-                                                    itemClass = 'position-2';
-                                                    badge = '';
-                                                } else if (position == 3) {
-                                                    itemClass = 'position-3';
-                                                    badge = '';
-                                                }
-                                                
-                                                return `
-                                                    <div class="stream-item ${itemClass}">
-                                                        <p><strong>Streamer:</strong> <a href="${stream.streaming_link}" target="_blank" class="streamer-name-button">${stream.streamer_name || stream.added_by}</a> ${badge}</p>
-                                                    </div>
-                                                `;
-                                            }).join('') : '<p style="color: #999; font-style: italic;">No streams available yet</p>'}
-                                    </div>
-                                `).join('');
-                            } else {
-                                gameList.innerHTML = '<div class="game-item"><div class="game-teams">No games available</div></div>';
-                            }
-                        }
-                    });
-                } else {
-                    console.error('API Error:', gamesData.error);
-                }
-            } catch (error) {
-                console.error('Error loading admin matchups and streams:', error);
-            }
-        }
-
-        // Show error message
-        function showError(message) {
-            const sportsGrid = document.getElementById('sportsGrid');
-            sportsGrid.innerHTML = `
-                <div style="text-align: center; padding: 40px; color: #dc3545;">
-                    <i class="fas fa-exclamation-triangle" style="font-size: 2rem; margin-bottom: 20px;"></i>
-                    <p>${message}</p>
-                    <button onclick="location.reload()" style="margin-top: 20px; padding: 10px 20px; background: #e50914; color: white; border: none; border-radius: 5px; cursor: pointer;">
-                        Retry
-                    </button>
-                </div>
-            `;
-        }
-        
-        // Load Discord link from API
-        async function loadDiscordLinkFromAPI() {
-            try {
-                const response = await fetch('api.php?action=get_discord_link');
-                const data = await response.json();
-                
-                if (data.success && data.discord_link && data.discord_link !== 'https://discord.gg/your-server-link') {
-                    const discordBtn = document.getElementById('discordBtn');
-                    discordBtn.href = data.discord_link;
-                    console.log('Discord link updated to:', data.discord_link);
-                }
-            } catch (error) {
-                console.log('Using default Discord link');
-            }
-        }
-        
-        // Load sport cards and games on page load
-        loadSportCardsFromAPI();
-        
-        // Load streaming links first, then show admin matchups with streamer links
-        loadStreamingLinksFromAPI().then(() => {
-            loadAdminMatchupsAndStreams();
-        });
-        
-        loadDiscordLinkFromAPI();
-    </script>
+      loadData();
+    })();
+  </script>
 </body>
 </html>
