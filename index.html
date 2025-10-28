@@ -219,47 +219,15 @@
             const infoDiv = document.createElement('div');
             infoDiv.className = 'text-left flex-1';
 
-            const titleContainer = document.createElement('div');
-            titleContainer.className = 'flex items-center gap-3 mb-1';
-
             const titleDiv = document.createElement('div');
-            titleDiv.className = 'font-semibold text-lg';
+            titleDiv.className = 'font-semibold text-lg mb-1';
             titleDiv.textContent = game.title || game.name || 'Match';
-
-            const copyTitleButton = document.createElement('button');
-            copyTitleButton.className = 'px-2 py-1 text-xs bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors';
-            copyTitleButton.textContent = 'Copy';
-            copyTitleButton.onclick = e => {
-              e.stopPropagation();
-              const titleText = game.title || game.name || 'Match';
-              navigator.clipboard.writeText(titleText).then(() => {
-                copyTitleButton.textContent = 'Copied!';
-                setTimeout(() => {
-                  copyTitleButton.textContent = 'Copy';
-                }, 2000);
-              }).catch(() => {
-                // Fallback for older browsers
-                const textArea = document.createElement('textarea');
-                textArea.value = titleText;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                copyTitleButton.textContent = 'Copied!';
-                setTimeout(() => {
-                  copyTitleButton.textContent = 'Copy';
-                }, 2000);
-              });
-            };
-
-            titleContainer.appendChild(titleDiv);
-            titleContainer.appendChild(copyTitleButton);
 
             const catDiv = document.createElement('div');
             catDiv.className = 'text-xs text-gray-500';
             catDiv.textContent = (game.category && game.category.name) || 'General';
 
-            infoDiv.appendChild(titleContainer);
+            infoDiv.appendChild(titleDiv);
             infoDiv.appendChild(catDiv);
             header.appendChild(infoDiv);
             gameDiv.appendChild(header);
@@ -285,16 +253,45 @@
                      window.open(s.url || s.stream || s, '_blank');
                    };
                    
-                   const copyButton = document.createElement('button');
-                   copyButton.className = 'ml-3 px-3 py-1 text-xs bg-secondary text-white rounded hover:bg-green-600 transition-colors';
-                   copyButton.textContent = 'Copy Iframe';
-                   copyButton.onclick = e => {
+                   const buttonContainer = document.createElement('div');
+                   buttonContainer.className = 'flex gap-2 ml-3';
+
+                   const copyTitleButton = document.createElement('button');
+                   copyTitleButton.className = 'px-3 py-2 text-sm bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors';
+                   copyTitleButton.textContent = 'Copy Title';
+                   copyTitleButton.onclick = e => {
+                     e.stopPropagation();
+                     const titleText = game.title || game.name || 'Match';
+                     navigator.clipboard.writeText(titleText).then(() => {
+                       copyTitleButton.textContent = 'Copied!';
+                       setTimeout(() => {
+                         copyTitleButton.textContent = 'Copy Title';
+                       }, 2000);
+                     }).catch(() => {
+                       // Fallback for older browsers
+                       const textArea = document.createElement('textarea');
+                       textArea.value = titleText;
+                       document.body.appendChild(textArea);
+                       textArea.select();
+                       document.execCommand('copy');
+                       document.body.removeChild(textArea);
+                       copyTitleButton.textContent = 'Copied!';
+                       setTimeout(() => {
+                         copyTitleButton.textContent = 'Copy Title';
+                       }, 2000);
+                     });
+                   };
+
+                   const copyIframeButton = document.createElement('button');
+                   copyIframeButton.className = 'px-3 py-2 text-sm bg-secondary text-white rounded hover:bg-green-600 transition-colors';
+                   copyIframeButton.textContent = 'Copy Iframe';
+                   copyIframeButton.onclick = e => {
                      e.stopPropagation();
                      const iframeCode = `<iframe src="${s.url || s.stream || s}" width="100%" height="400" frameborder="0" allowfullscreen></iframe>`;
                      navigator.clipboard.writeText(iframeCode).then(() => {
-                       copyButton.textContent = 'Copied!';
+                       copyIframeButton.textContent = 'Copied!';
                        setTimeout(() => {
-                         copyButton.textContent = 'Copy Iframe';
+                         copyIframeButton.textContent = 'Copy Iframe';
                        }, 2000);
                      }).catch(() => {
                        // Fallback for older browsers
@@ -304,15 +301,18 @@
                        textArea.select();
                        document.execCommand('copy');
                        document.body.removeChild(textArea);
-                       copyButton.textContent = 'Copied!';
+                       copyIframeButton.textContent = 'Copied!';
                        setTimeout(() => {
-                         copyButton.textContent = 'Copy Iframe';
+                         copyIframeButton.textContent = 'Copy Iframe';
                        }, 2000);
                      });
                    };
+
+                   buttonContainer.appendChild(copyTitleButton);
+                   buttonContainer.appendChild(copyIframeButton);
                    
                    serverContainer.appendChild(serverButton);
-                   serverContainer.appendChild(copyButton);
+                   serverContainer.appendChild(buttonContainer);
                    expandedDiv.appendChild(serverContainer);
                  });
                } else {
