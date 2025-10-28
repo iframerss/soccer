@@ -217,17 +217,49 @@
             header.className = 'flex items-center justify-between';
 
             const infoDiv = document.createElement('div');
-            infoDiv.className = 'text-left';
+            infoDiv.className = 'text-left flex-1';
+
+            const titleContainer = document.createElement('div');
+            titleContainer.className = 'flex items-center gap-3 mb-1';
 
             const titleDiv = document.createElement('div');
             titleDiv.className = 'font-semibold text-lg';
             titleDiv.textContent = game.title || game.name || 'Match';
 
-             const catDiv = document.createElement('div');
-             catDiv.className = 'text-xs text-gray-500';
-             catDiv.textContent = (game.category && game.category.name) || 'General';
+            const copyTitleButton = document.createElement('button');
+            copyTitleButton.className = 'px-2 py-1 text-xs bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors';
+            copyTitleButton.textContent = 'Copy';
+            copyTitleButton.onclick = e => {
+              e.stopPropagation();
+              const titleText = game.title || game.name || 'Match';
+              navigator.clipboard.writeText(titleText).then(() => {
+                copyTitleButton.textContent = 'Copied!';
+                setTimeout(() => {
+                  copyTitleButton.textContent = 'Copy';
+                }, 2000);
+              }).catch(() => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = titleText;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                copyTitleButton.textContent = 'Copied!';
+                setTimeout(() => {
+                  copyTitleButton.textContent = 'Copy';
+                }, 2000);
+              });
+            };
 
-            infoDiv.appendChild(titleDiv);
+            titleContainer.appendChild(titleDiv);
+            titleContainer.appendChild(copyTitleButton);
+
+            const catDiv = document.createElement('div');
+            catDiv.className = 'text-xs text-gray-500';
+            catDiv.textContent = (game.category && game.category.name) || 'General';
+
+            infoDiv.appendChild(titleContainer);
             infoDiv.appendChild(catDiv);
             header.appendChild(infoDiv);
             gameDiv.appendChild(header);
