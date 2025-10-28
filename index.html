@@ -22,8 +22,8 @@
 
   <style>
     body {
-      background-color: #0b0f13;
-      color: white;
+      background-color: #ffffff;
+      color: #333333;
       font-family: system-ui, sans-serif;
     }
     a.footer-link {
@@ -34,10 +34,10 @@
     }
   </style>
 </head>
-<body class="w-full min-h-screen bg-primary text-white p-6">
+<body class="w-full min-h-screen bg-white text-gray-800 p-6">
 
   <div class="w-full mx-auto px-6">
-    <div id="root" class="text-center py-10 text-gray-400">Loading streams...</div>
+    <div id="root" class="text-center py-10 text-gray-600">Loading streams...</div>
   </div>
 
   <a class="footer-link" href="https://streamcenter.live" target="_blank">Live Stream Sports</a>
@@ -168,11 +168,11 @@
 
         categoriesWithAll.forEach(cat => {
           const button = document.createElement('button');
-          button.className = `flex items-center gap-2 px-4 py-2 rounded-lg whitespace-nowrap border ${
-            cat.id === currentCategoryId
-              ? 'bg-secondary text-primary border-secondary'
-              : 'bg-gray-800 border-gray-700 text-gray-300'
-          }`;
+           button.className = `flex items-center gap-2 px-4 py-2 rounded-lg whitespace-nowrap border ${
+             cat.id === currentCategoryId
+               ? 'bg-secondary text-white border-secondary'
+               : 'bg-gray-100 border-gray-300 text-gray-700 hover:bg-gray-200'
+           }`;
 
           const span = document.createElement('span');
           span.className = 'text-sm';
@@ -203,14 +203,14 @@
                   (g.category && String(g.category.id) === String(currentCategoryId))
               );
 
-        if (filteredGames.length === 0) {
-          gamesContainer.innerHTML =
-            '<div class="text-left py-8 text-gray-400">No games found in this category.</div>';
+         if (filteredGames.length === 0) {
+           gamesContainer.innerHTML =
+             '<div class="text-left py-8 text-gray-600">No games found in this category.</div>';
         } else {
           filteredGames.forEach(game => {
             const gameDiv = document.createElement('div');
             gameDiv.className =
-              'bg-gray-900 rounded-xl p-4 border border-gray-800 cursor-pointer hover:shadow-xl transition-shadow duration-200';
+              'bg-white rounded-xl p-4 border border-gray-200 cursor-pointer hover:shadow-xl transition-shadow duration-200 shadow-sm';
             gameDiv.onclick = () => toggleExpand(game);
 
             const header = document.createElement('div');
@@ -223,9 +223,9 @@
             titleDiv.className = 'font-semibold text-lg';
             titleDiv.textContent = game.title || game.name || 'Match';
 
-            const catDiv = document.createElement('div');
-            catDiv.className = 'text-xs text-gray-400';
-            catDiv.textContent = (game.category && game.category.name) || 'General';
+             const catDiv = document.createElement('div');
+             catDiv.className = 'text-xs text-gray-500';
+             catDiv.textContent = (game.category && game.category.name) || 'General';
 
             infoDiv.appendChild(titleDiv);
             infoDiv.appendChild(catDiv);
@@ -233,17 +233,17 @@
             gameDiv.appendChild(header);
 
             // Expanded Section
-            if (expandedGame && expandedGame.id === game.id) {
-              const expandedDiv = document.createElement('div');
-              expandedDiv.className =
-                'mt-4 border-t border-gray-800 pt-4 bg-gray-800 rounded-b-xl transition-all';
+             if (expandedGame && expandedGame.id === game.id) {
+               const expandedDiv = document.createElement('div');
+               expandedDiv.className =
+                 'mt-4 border-t border-gray-200 pt-4 bg-gray-50 rounded-b-xl transition-all';
 
               const servers = streamsCache[game.id] || [];
 
                if (servers.length > 0) {
                  servers.forEach((s, i) => {
                    const serverContainer = document.createElement('div');
-                   serverContainer.className = 'flex items-center justify-between mb-2 p-3 rounded bg-gray-700 hover:bg-gray-600';
+                   serverContainer.className = 'flex items-center justify-between mb-2 p-3 rounded bg-white hover:bg-gray-100 border border-gray-200';
                    
                    const serverButton = document.createElement('button');
                    serverButton.className = 'flex-1 text-left';
@@ -254,7 +254,7 @@
                    };
                    
                    const copyButton = document.createElement('button');
-                   copyButton.className = 'ml-3 px-3 py-1 text-xs bg-secondary text-primary rounded hover:bg-green-600 hover:text-white transition-colors';
+                   copyButton.className = 'ml-3 px-3 py-1 text-xs bg-secondary text-white rounded hover:bg-green-600 transition-colors';
                    copyButton.textContent = 'Copy Iframe';
                    copyButton.onclick = e => {
                      e.stopPropagation();
@@ -285,7 +285,7 @@
                  });
                } else {
                 const noStream = document.createElement('div');
-                noStream.className = 'text-sm text-gray-400';
+                noStream.className = 'text-sm text-gray-600';
                 noStream.textContent = 'No servers found for this game.';
                 expandedDiv.appendChild(noStream);
               }
